@@ -55,7 +55,7 @@
         }
 
         .hero-reference {
-            min-height: clamp(360px, 38vw, 520px);
+            min-height: clamp(460px, 42vw, 580px);
             display: flex;
             align-items: center;
             border-top: 2px solid #00aaff;
@@ -74,28 +74,30 @@
         .hero-reference__crest {
             position: absolute;
             z-index: 1;
-            top: 20%;
-            left: 22%;
-            width: clamp(185px, 24vw, 315px);
+            top: 24%;
+            left: 19%;
+            width: clamp(165px, 20vw, 270px);
             transform: translate(-50%, -50%);
             opacity: 1;
             filter: none;
         }
 
         .hero-reference__copy {
-            position: relative;
+            position: absolute;
             z-index: 2;
-            width: min(100%, 1040px);
-            margin-left: 0;
-            transform: translateY(clamp(115px, 9vw, 140px));
+            top: 55%;
+            left: clamp(1.5rem, 5vw, 5rem);
+            width: min(48%, 680px);
+            margin: 0;
+            transform: none;
         }
 
         .hero-reference__effect {
             position: absolute;
             z-index: 0;
-            top: 20%;
-            left: 22%;
-            width: clamp(260px, 34vw, 420px);
+            top: 24%;
+            left: 19%;
+            width: clamp(230px, 29vw, 380px);
             height: auto;
             opacity: 1;
             filter: none;
@@ -107,14 +109,14 @@
         .hero-reference__team {
             position: absolute;
             z-index: 1;
-            right: -1%;
-            bottom: -6.5rem;
-            width: clamp(550px, 60vw, 880px);
+            right: 0;
+            bottom: -3rem;
+            width: clamp(580px, 64vw, 900px);
             height: auto;
             object-fit: contain;
             pointer-events: none;
             user-select: none;
-            transform: rotate(1deg);
+            transform: none;
             transform-origin: 50% 100%;
         }
 
@@ -248,43 +250,50 @@
 
         @media (max-width: 767px) {
             .hero-reference {
-                min-height: 430px;
+                min-height: 510px;
             }
 
             .hero-reference__inner {
-                padding: 2.5rem 1rem 3.5rem;
+                min-height: 510px;
+                padding: 1.5rem 1rem 2rem;
             }
 
             .hero-reference__crest {
-                top: 22%;
+                top: 25%;
                 left: 50%;
-                width: min(58vw, 235px);
+                width: min(40vw, 175px);
                 transform: translate(-50%, -50%);
                 opacity: 1;
             }
 
             .hero-reference__copy {
+                position: absolute;
+                top: 49%;
+                left: 1rem;
+                width: calc(100% - 2rem);
                 margin: 0;
                 text-align: center;
-                transform: translateY(68px);
+                transform: none;
+                text-shadow: 0 2px 8px #030a19, 0 0 18px #030a19;
             }
 
             .hero-reference__effect {
-                top: 22%;
+                top: 25%;
                 left: 50%;
-                width: min(82vw, 330px);
+                width: min(62vw, 250px);
                 transform: translate(-50%, -50%);
             }
 
             .hero-reference__team {
-                right: -22%;
-                bottom: -4rem;
-                width: 120vw;
-                max-width: 620px;
+                right: 50%;
+                bottom: -0.5rem;
+                width: min(110vw, 620px);
+                max-width: none;
+                transform: translateX(50%);
             }
 
             .hero-reference__title {
-                font-size: clamp(2.7rem, 10vw, 4.1rem);
+                font-size: clamp(2.2rem, 9vw, 3.4rem);
                 letter-spacing: -0.055em;
             }
 
@@ -298,9 +307,9 @@
 
             .hero-reference__tagline {
                 width: 100%;
-                margin: 0.6rem auto 0;
+                margin: 0.4rem auto 0;
                 transform: none;
-                font-size: clamp(1.3rem, 5.2vw, 1.75rem);
+                font-size: clamp(1.15rem, 4.5vw, 1.55rem);
             }
 
             .hero-reference__smoke {
@@ -910,32 +919,35 @@
             }
 
             .site-header__mainbar {
-                min-height: 58px;
+                min-height: 76px;
+                gap: 0.5rem;
             }
 
             .site-header__brand {
-                min-height: 58px;
-                padding-left: 68px;
+                min-height: 76px;
+                padding-left: 58px;
             }
 
             .site-header__brand-badge {
                 left: 0;
-                width: 60px;
-                height: 60px;
+                width: 52px;
+                height: 52px;
                 transform: translateY(-50%);
             }
 
             .site-header__brand-name {
-                font-size: 1.15rem;
+                font-size: clamp(1rem, 5vw, 1.25rem);
+                letter-spacing: 0.015em;
             }
 
             .site-header__brand-sub {
-                letter-spacing: 0.08em;
+                font-size: 0.58rem;
+                letter-spacing: 0.1em;
             }
 
             .site-header__mainbar {
-                padding-left: 0.9rem;
-                padding-right: 0.9rem;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
             }
 
             .site-header__nav {
@@ -943,7 +955,106 @@
             }
 
             #mobileMenuBtn {
-                display: block;
+                display: grid;
+                width: 44px;
+                height: 44px;
+                flex: 0 0 44px;
+                place-items: center;
+                border-radius: 0.75rem;
+                color: #079bb4;
+                font-size: 1.5rem;
+            }
+
+            #mobileMenu {
+                margin: 0;
+                padding: 0.5rem 0.75rem 0.85rem;
+                background: linear-gradient(180deg, #f2f5f8 0%, #e8eef4 100%);
+                border-top: 1px solid rgba(14, 63, 100, 0.18);
+            }
+
+            #mobileMenu a {
+                min-height: 44px;
+                color: #10243a;
+            }
+
+            #mobileMenu a:hover,
+            #mobileMenu a:focus-visible {
+                background: rgba(0, 115, 210, 0.12);
+            }
+
+            .hero-reference__crest {
+                top: 25%;
+            }
+
+            .hero-reference__effect {
+                top: 25%;
+            }
+
+            .hero-reference__crest {
+                width: min(40vw, 175px);
+            }
+
+            .hero-reference__effect {
+                width: min(62vw, 250px);
+            }
+
+            .hero-reference__copy {
+                top: 49%;
+            }
+
+            .hero-reference__title {
+                font-size: clamp(2.2rem, 9vw, 3.4rem);
+                letter-spacing: -0.06em;
+            }
+
+            .hero-reference__subtitle {
+                width: 100%;
+                margin: 0.35rem 0 0;
+                transform: none;
+                letter-spacing: 0.2em;
+                font-size: clamp(0.75rem, 3.3vw, 1rem);
+            }
+
+            .hero-reference__tagline {
+                width: 100%;
+                margin: 0.45rem auto 0;
+                transform: none;
+                font-size: clamp(1.15rem, 4.5vw, 1.55rem);
+            }
+
+            .hero-reference__team {
+                right: 50%;
+                bottom: -0.5rem;
+                width: min(110vw, 620px);
+                transform: translateX(50%);
+            }
+
+            .hero-reference__smoke {
+                left: -25%;
+                bottom: -14%;
+                width: 100vw;
+            }
+
+            .hero-reference__light {
+                top: 2%;
+                right: -14%;
+                width: 58vw;
+            }
+
+            .hero-reference__dots {
+                right: 50%;
+                bottom: 0.75rem;
+                transform: translateX(50%);
+            }
+
+            .hero-reference__dots span {
+                width: 8px;
+                height: 8px;
+            }
+
+            .card-hover:hover {
+                transform: none;
+                box-shadow: none;
             }
 
             .hero-showcase {
@@ -980,6 +1091,66 @@
             .hero-showcase__arrow {
                 width: 36px;
                 height: 36px;
+            }
+
+        }
+
+        @media (max-width: 380px) {
+            .site-header__mainbar {
+                padding-right: 0.5rem;
+                padding-left: 0.6rem;
+            }
+
+            .site-header__brand {
+                gap: 0.35rem;
+                padding-left: 52px;
+            }
+
+            .site-header__brand-badge {
+                width: 48px;
+                height: 48px;
+            }
+
+            .site-header__brand-name {
+                font-size: 0.98rem;
+            }
+
+            .site-header__brand-sub {
+                font-size: 0.52rem;
+                letter-spacing: 0.08em;
+            }
+
+            .hero-reference,
+            .hero-reference__inner {
+                min-height: 490px;
+            }
+
+            .hero-reference__crest {
+                top: 29%;
+            }
+
+            .hero-reference__effect {
+                top: 29%;
+            }
+
+            .hero-reference__copy {
+                top: 48%;
+            }
+
+            .hero-reference__title {
+                font-size: clamp(2.15rem, 10.5vw, 2.8rem);
+            }
+
+            .hero-reference__subtitle {
+                letter-spacing: 0.13em;
+            }
+
+            .hero-reference__tagline {
+                font-size: clamp(1.15rem, 5vw, 1.4rem);
+            }
+
+            .hero-reference__team {
+                width: 115vw;
             }
         }
 
