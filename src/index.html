@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Cedros F.C. - Fútbol Sala</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bebas+Neue&family=Caveat:wght@600;700&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Teko:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #030a19;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Script font matching original image typography */
+        .font-script-title {
+            font-family: 'Yellowtail', 'Alex Brush', cursive;
+        }
+
+        .font-script-sub {
+            font-family: 'Caveat', cursive;
+        }
+
+        .hero-background {
+            isolation: isolate;
+        }
+
+        .hero-background::before,
+        .hero-background::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-background::before {
+            background: url("Info/Fondo/fomdo cancha.png") center 48% / cover no-repeat;
+            transform: scale(1.02);
+        }
+
+        .hero-background::after {
+            background:
+                linear-gradient(90deg, rgba(1, 8, 20, 0.82), rgba(1, 8, 20, 0.53) 58%, rgba(1, 8, 20, 0.42)),
+                linear-gradient(0deg, #030a19 0%, transparent 28%, rgba(1, 8, 20, 0.1) 100%);
+        }
+
+        .hero-reference {
+            min-height: clamp(360px, 38vw, 520px);
+            display: flex;
+            align-items: center;
+            border-top: 2px solid #00aaff;
+            border-bottom: 1px solid rgba(0, 174, 255, 0.65);
+            isolation: isolate;
+        }
+
+        .hero-reference__inner {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 1440px);
+            margin: 0 auto;
+            padding: 2.5rem clamp(0.75rem, 1.8vw, 1.75rem);
+        }
+
+        .hero-reference__crest {
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 22%;
+            width: clamp(185px, 24vw, 315px);
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            filter: none;
+        }
+
+        .hero-reference__copy {
+            position: relative;
+            z-index: 2;
+            width: min(100%, 1040px);
+            margin-left: 0;
+            transform: translateY(clamp(115px, 9vw, 140px));
+        }
+
+        .hero-reference__effect {
+            position: absolute;
+            z-index: 0;
+            top: 20%;
+            left: 22%;
+            width: clamp(260px, 34vw, 420px);
+            height: auto;
+            opacity: 1;
+            filter: none;
+            pointer-events: none;
+            user-select: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-reference__team {
+            position: absolute;
+            z-index: 1;
+            right: -1%;
+            bottom: -6.5rem;
+            width: clamp(550px, 60vw, 880px);
+            height: auto;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+            transform: rotate(1deg);
+            transform-origin: 50% 100%;
+        }
+
+        .hero-reference__title {
+            margin: 0;
+            color: #f7fbff;
+            font-family: 'Teko', 'Bebas Neue', sans-serif;
+            font-size: clamp(3.8rem, 6.8vw, 6.2rem);
+            font-style: italic;
+            font-weight: 700;
+            letter-spacing: -0.045em;
+            line-height: 0.82;
+            white-space: nowrap;
+            text-shadow: 0 4px 2px rgba(0, 0, 0, 0.7), 0 0 22px rgba(46, 159, 255, 0.38);
+            transform: skewX(-5deg);
+        }
+
+        .hero-reference__title span {
+            color: #00c7f5;
+        }
+
+        .hero-reference__subtitle {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.7rem, 2vw, 1.6rem);
+            width: min(700px, 80%);
+            margin: 0.45rem 0 0 0.15rem;
+            transform: translateX(-68px);
+            color: #f5f8ff;
+            font-size: clamp(0.8rem, 1.35vw, 1.15rem);
+            font-weight: 800;
+            letter-spacing: clamp(0.22em, 0.75vw, 0.58em);
+            white-space: nowrap;
+        }
+
+        .hero-reference__subtitle::before,
+        .hero-reference__subtitle::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: #00c7f5;
+            box-shadow: 0 0 10px rgba(0, 199, 245, 0.75);
+        }
+
+        .hero-reference__tagline {
+            width: min(700px, 80%);
+            margin: 0.55rem 0 0 0.15rem;
+            transform: translateX(-68px);
+            color: #f5f8ff;
+            font-family: 'Yellowtail', 'Alex Brush', cursive;
+            font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+            line-height: 1;
+            text-align: center;
+            text-shadow: 0 2px 14px rgba(0, 183, 255, 0.7);
+        }
+
+        .hero-reference__tagline span {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            color: #75e7ff;
+        }
+
+        .hero-reference__smoke,
+        .hero-reference__light {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-reference__smoke {
+            left: -7%;
+            bottom: -35%;
+            width: min(58vw, 740px);
+            opacity: 0.46;
+            mix-blend-mode: screen;
+            filter: sepia(1) saturate(4) hue-rotate(165deg) drop-shadow(0 0 22px rgba(0, 153, 255, 0.8));
+            animation: smoke-drift 12s ease-in-out infinite alternate;
+        }
+
+        .hero-reference__light {
+            top: 4%;
+            right: 2%;
+            width: min(34vw, 460px);
+            opacity: 0.32;
+            mix-blend-mode: screen;
+            filter: hue-rotate(165deg) saturate(1.5);
+            animation: light-pulse 4s ease-in-out infinite alternate;
+        }
+
+        .hero-reference__shade {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(1, 8, 20, 0.12), transparent 68%),
+                linear-gradient(0deg, rgba(1, 8, 20, 0.38), transparent 40%);
+        }
+
+        .hero-reference__dots {
+            position: absolute;
+            right: clamp(1rem, 5vw, 4rem);
+            bottom: 1.2rem;
+            z-index: 2;
+            display: flex;
+            gap: 0.55rem;
+        }
+
+        .hero-reference__dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(210, 230, 255, 0.58);
+        }
+
+        .hero-reference__dots span:first-child {
+            background: #00c7f5;
+            box-shadow: 0 0 12px #00c7f5;
+        }
+
+        @keyframes smoke-drift {
+            from { transform: translate3d(-1%, 0, 0) scale(1); }
+            to { transform: translate3d(3%, -4%, 0) scale(1.06); }
+        }
+
+        @keyframes light-pulse {
+            from { opacity: 0.24; }
+            to { opacity: 0.48; }
+        }
+
+        @media (max-width: 767px) {
+            .hero-reference {
+                min-height: 430px;
+            }
+
+            .hero-reference__inner {
+                padding: 2.5rem 1rem 3.5rem;
+            }
+
+            .hero-reference__crest {
+                top: 22%;
+                left: 50%;
+                width: min(58vw, 235px);
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+
+            .hero-reference__copy {
+                margin: 0;
+                text-align: center;
+                transform: translateY(68px);
+            }
+
+            .hero-reference__effect {
+                top: 22%;
+                left: 50%;
+                width: min(82vw, 330px);
+                transform: translate(-50%, -50%);
+            }
+
+            .hero-reference__team {
+                right: -22%;
+                bottom: -4rem;
+                width: 120vw;
+                max-width: 620px;
+            }
+
+            .hero-reference__title {
+                font-size: clamp(2.7rem, 10vw, 4.1rem);
+                letter-spacing: -0.055em;
+            }
+
+            .hero-reference__subtitle {
+                width: 100%;
+                margin: 0.55rem 0 0;
+                transform: none;
+                letter-spacing: 0.2em;
+                font-size: clamp(0.72rem, 3vw, 1rem);
+            }
+
+            .hero-reference__tagline {
+                width: 100%;
+                margin: 0.6rem auto 0;
+                transform: none;
+                font-size: clamp(1.3rem, 5.2vw, 1.75rem);
+            }
+
+            .hero-reference__smoke {
+                left: -30%;
+                bottom: -16%;
+                width: 115vw;
+            }
+
+            .hero-reference__light {
+                top: 1%;
+                right: -19%;
+                width: 64vw;
+            }
+
+        }
+
+        @media (max-width: 380px) {
+            .hero-reference__title {
+                font-size: clamp(2.55rem, 12.2vw, 3.1rem);
+            }
+
+            .hero-reference__subtitle {
+                letter-spacing: 0.12em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-reference__smoke,
+            .hero-reference__light {
+                animation: none;
+            }
+        }
+
+        /* Ambient Glow & Background effects */
+        .glow-blue {
+            box-shadow: 0 0 30px rgba(0, 140, 255, 0.45);
+        }
+
+        .card-blur {
+            background: rgba(6, 20, 45, 0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 162, 255, 0.3);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 180, 255, 0.7);
+            box-shadow: 0 12px 35px -5px rgba(0, 140, 255, 0.4);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030a19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0077ff;
+            border-radius: 4px;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+        }
+
+        .site-header__topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            min-height: 34px;
+            background: linear-gradient(90deg, #020d1b 0%, #061d31 18%, #03274a 52%, #091f36 100%);
+            border-bottom: 1px solid rgba(140, 208, 255, 0.28);
+            padding: 0.3rem 1rem;
+        }
+
+        .site-header__topbar-label,
+        .site-header__topbar-center,
+        .site-header__social {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .site-header__topbar-label {
+            font-size: 0.7rem;
+            line-height: 1;
+            font-weight: 700;
+            color: #f4f8ff;
+            letter-spacing: 0.02em;
+        }
+
+        .site-header__topbar-label i,
+        .site-header__topbar-center i {
+            color: #f7d65c;
+            font-size: 1rem;
+        }
+
+        .site-header__topbar-center {
+            justify-content: center;
+            flex: 1;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #f3f8ff;
+            letter-spacing: 0.02em;
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .site-header__topbar-center::before,
+        .site-header__topbar-center::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,0.18);
+        }
+
+        .site-header__topbar-center::before {
+            left: 0;
+        }
+
+        .site-header__topbar-center::after {
+            right: 0;
+        }
+
+        .site-header__social {
+            justify-content: flex-end;
+            gap: 0.55rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.92);
+            color: #0a1830;
+            font-size: 0.82rem;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 18px rgba(82,170,255,0.35);
+        }
+
+        .site-header__mainbar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            min-height: 46px;
+            padding: 0 1.4rem;
+            background: linear-gradient(180deg, #ffffff 0%, #f2f5f8 100%);
+            border-bottom: 1px solid rgba(14, 63, 100, 0.28);
+        }
+
+        .site-header__brand {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            min-height: 46px;
+            padding-left: 94px;
+            min-width: 0;
+        }
+
+        .site-header__brand-badge {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 86px;
+            height: 86px;
+            transform: translateY(calc(-50% - 7px));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-header__brand-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .site-header__brand-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .site-header__brand-name {
+            font-size: clamp(1.15rem, 1.6vw, 1.8rem);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            color: #06172a;
+            font-family: 'Teko', 'Montserrat', sans-serif;
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        .site-header__brand-sub {
+            margin-top: 0.1rem;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #061b30;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .site-header__nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.08rem;
+            flex-wrap: wrap;
+        }
+
+        .site-header__nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.58rem 0.48rem;
+            border-radius: 8px;
+            color: #08192d;
+            font-size: 0.62rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .site-header__nav a i {
+            font-size: 0.78rem;
+        }
+
+        .site-header__nav a:hover {
+            color: #0d4b9a;
+            background: rgba(255,255,255,0.14);
+            transform: translateY(-2px);
+        }
+
+        .site-header__nav a:active {
+            transform: scale(0.94);
+        }
+
+        .site-header__nav a.is-active {
+            background: linear-gradient(180deg, #2e88ff 0%, #0961d2 100%);
+            color: #ffffff;
+            box-shadow: inset 0 -2px 0 rgba(5,31,74,0.35), 0 0 0 2px rgba(46,136,255,0.18), 0 8px 20px rgba(9,97,210,0.38);
+            transform: translateY(-2px);
+        }
+
+        .site-header__nav a.is-active i {
+            animation: nav-icon-pop 0.35s ease-out;
+        }
+
+        @keyframes nav-icon-pop {
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .site-header__nav a,
+            .site-header__nav a.is-active i {
+                animation: none;
+                transition: none;
+            }
+        }
+
+        #mobileMenuBtn {
+            display: none;
+        }
+
+        .hero-showcase {
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            background:
+                linear-gradient(90deg, rgba(2, 13, 24, 0.74) 0%, rgba(2, 13, 24, 0.12) 32%, rgba(2, 13, 24, 0.7) 100%),
+                url("Info/Fondo/fomdo cancha.png") center center / cover no-repeat;
+            border-top: 1px solid rgba(109, 180, 255, 0.3);
+        }
+
+        .hero-showcase::before,
+        .hero-showcase::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hero-showcase::before {
+            background:
+                linear-gradient(90deg, transparent 0%, rgba(110, 206, 255, 0.18) 18%, rgba(0,0,0,0) 26%),
+                linear-gradient(90deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 18%, rgba(255,255,255,0.04) 22%, rgba(255,255,255,0) 38%),
+                radial-gradient(circle at 20% 15%, rgba(71, 195, 255, 0.28), transparent 30%),
+                radial-gradient(circle at 58% 12%, rgba(111, 180, 255, 0.18), transparent 26%);
+        }
+
+        .hero-showcase::after {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34));
+        }
+
+        .hero-showcase__inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1460px;
+            margin: 0 auto;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.4rem 0.8rem;
+        }
+
+        .hero-showcase__crest {
+            position: absolute;
+            left: 18px;
+            top: 80px;
+            width: min(30vw, 380px);
+            opacity: 0.18;
+            filter: brightness(1.2) drop-shadow(0 0 20px rgba(64, 170, 255, 0.4));
+            z-index: 0;
+        }
+
+        .hero-showcase__content {
+            position: relative;
+            z-index: 2;
+            width: min(44%, 620px);
+            padding-left: 0.5rem;
+        }
+
+        .hero-showcase__title {
+            font-family: 'Bebas Neue', 'Teko', sans-serif;
+            font-size: clamp(3rem, 5vw, 7.5rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 0.88;
+            color: #f8fbff;
+            text-transform: uppercase;
+            text-shadow: 0 3px 18px rgba(13, 69, 141, 0.8), 0 0 16px rgba(29, 160, 255, 0.28);
+            margin: 0;
+            transform: skewX(-8deg);
+        }
+
+        .hero-showcase__title .blue {
+            color: #62d1ff;
+        }
+
+        .hero-showcase__subtitle {
+            font-family: 'Teko', sans-serif;
+            font-size: clamp(1.4rem, 2vw, 3rem);
+            letter-spacing: 0.16em;
+            line-height: 1.1;
+            color: #effcfe;
+            margin: 0.3rem 0 0.8rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .hero-showcase__tagline {
+            font-family: 'Yellowtail', 'Alex Brush', cursive;
+            font-size: clamp(2rem, 2.8vw, 4.2rem);
+            color: #91e8ff;
+            line-height: 1;
+            margin: 0;
+            text-shadow: 0 2px 12px rgba(90, 190, 255, 0.22);
+            transform: skewX(-5deg);
+        }
+
+        .hero-showcase__cta {
+            margin-top: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            background: rgba(4, 16, 27, 0.82);
+            border: 1px solid rgba(94, 168, 255, 0.75);
+            color: #f2fcff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.9rem 1.5rem 0.9rem 1.4rem;
+            border-radius: 999px;
+            text-decoration: none;
+            box-shadow: 0 0 0 1px rgba(112, 190, 255, 0.15), 0 0 20px rgba(37, 196, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .hero-showcase__cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 22px rgba(53, 173, 255, 0.5);
+            border-color: rgba(140, 217, 255, 0.9);
+        }
+
+        .hero-showcase__cta-circle {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #2d8cff 0%, #0b63cd 100%);
+            color: #fff;
+            font-size: 0.72rem;
+        }
+
+        .hero-showcase__media {
+            position: relative;
+            z-index: 2;
+            width: min(62%, 980px);
+            margin-left: auto;
+            margin-right: 0;
+            height: 480px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .hero-showcase__photo {
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: min(760px, 95%);
+            height: auto;
+            object-fit: cover;
+            filter: drop-shadow(0 20px 25px rgba(0,0,0,0.45));
+        }
+
+        .hero-showcase__nav {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 3;
+        }
+
+        .hero-showcase__nav button {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.16);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hero-showcase__nav button.active {
+            background: rgba(93, 194, 255, 0.95);
+            border-color: rgba(180, 225, 255, 0.9);
+            box-shadow: 0 0 14px rgba(81, 183, 255, 0.55);
+        }
+
+        .hero-showcase__arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(6, 23, 39, 0.32);
+            color: #e8f6ff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hero-showcase__arrow:hover {
+            background: rgba(18, 90, 171, 0.5);
+            border-color: rgba(146, 216, 255, 0.8);
+        }
+
+        .hero-showcase__arrow--left {
+            left: 18px;
+        }
+
+        .hero-showcase__arrow--right {
+            right: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            .site-header__mainbar {
+                gap: 0.4rem;
+                padding-right: 0.7rem;
+                padding-left: 0.7rem;
+            }
+
+            .site-header__brand {
+                gap: 0.55rem;
+                padding-left: 86px;
+            }
+
+            .site-header__brand-badge {
+                width: 78px;
+                height: 78px;
+            }
+
+            .site-header__nav {
+                gap: 0;
+            }
+
+            .site-header__nav a {
+                gap: 0.25rem;
+                padding: 0.52rem 0.32rem;
+                font-size: 0.56rem;
+            }
+
+            .site-header__nav a i {
+                font-size: 0.72rem;
+            }
+
+            .hero-showcase__inner {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 2rem;
+                padding-bottom: 3.5rem;
+            }
+
+            .hero-showcase__content,
+            .hero-showcase__media {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero-showcase__content {
+                padding-left: 0;
+            }
+
+            .hero-showcase__title,
+            .hero-showcase__subtitle,
+            .hero-showcase__tagline {
+                transform: none;
+            }
+
+            .hero-showcase__media {
+                height: 360px;
+            }
+
+            .hero-showcase__photo {
+                width: min(700px, 100%);
+                right: 50%;
+                transform: translateX(50%);
+            }
+
+            .hero-showcase__crest {
+                left: 50%;
+                transform: translateX(-50%);
+                width: min(45vw, 270px);
+                opacity: 0.22;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .site-header__topbar {
+                justify-content: center;
+                min-height: 32px;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .site-header__topbar-label {
+                font-size: 0.72rem;
+            }
+
+            .site-header__topbar-center {
+                display: none;
+            }
+
+            .site-header__social {
+                display: none;
+            }
+
+            .site-header__mainbar {
+                min-height: 58px;
+            }
+
+            .site-header__brand {
+                min-height: 58px;
+                padding-left: 68px;
+            }
+
+            .site-header__brand-badge {
+                left: 0;
+                width: 60px;
+                height: 60px;
+                transform: translateY(-50%);
+            }
+
+            .site-header__brand-name {
+                font-size: 1.15rem;
+            }
+
+            .site-header__brand-sub {
+                letter-spacing: 0.08em;
+            }
+
+            .site-header__mainbar {
+                padding-left: 0.9rem;
+                padding-right: 0.9rem;
+            }
+
+            .site-header__nav {
+                display: none;
+            }
+
+            #mobileMenuBtn {
+                display: block;
+            }
+
+            .hero-showcase {
+                min-height: 420px;
+            }
+
+            .hero-showcase__inner {
+                min-height: 420px;
+                padding-top: 1.2rem;
+            }
+
+            .hero-showcase__title {
+                font-size: clamp(2.6rem, 15vw, 5.3rem);
+            }
+
+            .hero-showcase__subtitle {
+                letter-spacing: 0.08em;
+                font-size: clamp(1rem, 5vw, 2.2rem);
+            }
+
+            .hero-showcase__tagline {
+                font-size: clamp(1.8rem, 8vw, 2.7rem);
+            }
+
+            .hero-showcase__cta {
+                font-size: 0.7rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .hero-showcase__media {
+                height: 270px;
+            }
+
+            .hero-showcase__arrow {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="site-header">
+        <div class="site-header__topbar">
+            <div class="site-header__topbar-center">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Los Cedros F.C. - Fútbol Sala</span>
+            </div>
+
+            <div class="site-header__social" aria-label="Redes sociales">
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com" class="social-icon" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="site-header__mainbar">
+            <div class="site-header__brand">
+                <div class="site-header__brand-badge">
+                    <img src="Info/Logo/Logo.png" alt="Escudo oficial de Los Cedros F.C.">
+                </div>
+                <div class="site-header__brand-text">
+                    <span class="site-header__brand-name">Los Cedros F.C.</span>
+                    <span class="site-header__brand-sub">Fútbol Sala</span>
+                </div>
+            </div>
+
+            <nav class="site-header__nav" aria-label="Navegación principal">
+                <a href="#inicio" class="is-active"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="#equipo"><i class="fa-solid fa-people-group"></i> Equipo</a>
+                <a href="#partidos"><i class="fa-solid fa-calendar-days"></i> Partidos</a>
+                <a href="#galeria"><i class="fa-regular fa-image"></i> Galería</a>
+                <a href="#noticias"><i class="fa-regular fa-newspaper"></i> Noticias</a>
+                <a href="#patrocinadores"><i class="fa-solid fa-handshake"></i> Patrocinadores</a>
+                <a href="#contacto"><i class="fa-regular fa-envelope"></i> Contacto</a>
+            </nav>
+
+            <button id="mobileMenuBtn" class="xl:hidden text-cyan-400 text-2xl p-2 focus:outline-none" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden mt-3 pt-3 border-t border-cyan-900/50 flex flex-col gap-2 px-4 pb-3">
+            <a href="#inicio" class="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-house"></i> Inicio
+            </a>
+            <a href="#equipo" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-trophy"></i> Equipo
+            </a>
+            <a href="#partidos" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-calendar-days"></i> Partidos
+            </a>
+            <a href="#galeria" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-image"></i> Galería
+            </a>
+            <a href="#noticias" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-newspaper"></i> Noticias
+            </a>
+            <a href="#patrocinadores" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-handshake"></i> Patrocinadores
+            </a>
+            <a href="#contacto" class="px-4 py-2 rounded-md text-gray-300 hover:bg-white/5 font-semibold text-sm flex items-center gap-3">
+                <i class="fa-solid fa-envelope"></i> Contacto
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero-background hero-reference relative overflow-hidden bg-[#030a19]">
+        <img class="hero-reference__smoke" src="Info/Efecto especiales/Humo.png" alt="" aria-hidden="true">
+        <img class="hero-reference__light" src="Info/Efecto especiales/Luz.png" alt="" aria-hidden="true">
+        <div class="hero-reference__shade" aria-hidden="true"></div>
+        <img class="hero-reference__team" src="Info/Fondo/Equipo 2.png" alt="Equipo de Los Cedros F.C." aria-hidden="true">
+        <div class="hero-reference__inner">
+            <img class="hero-reference__effect" src="Info/Efecto especiales/Punto negro.png" alt="" aria-hidden="true">
+            <img class="hero-reference__crest" src="Info/Logo/Logo.png" alt="" aria-hidden="true">
+            <div class="hero-reference__copy">
+                <h1 class="hero-reference__title">LOS CEDROS <span>F.C.</span></h1>
+                <h2 class="hero-reference__subtitle">FÚTBOL SALA</h2>
+                <p class="hero-reference__tagline">Donde la humildad se convierte en<br><span>grandeza</span></p>
+            </div>
+        </div>
+        <div class="hero-reference__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+    <!-- MAIN CONTENT WIDGET GRID (3 CARDS) -->
+    <section class="py-8 px-4 lg:px-8 max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- WIDGET 1: ÚLTIMO PARTIDO -->
+            <div id="partidos" class="card-blur card-hover rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                    <!-- Header -->
+                    <div class="flex items-center gap-2 pb-3 border-b border-cyan-900/40">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600/30 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid fa-futbol text-sm"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm tracking-wider text-white uppercase">ÚLTIMO PARTIDO</h3>
+                    </div>
+
+                    <!-- Teams Versus Display -->
+                    <div class="py-6 flex items-center justify-around">
+                        <!-- Cedros Team Crest -->
+                        <div class="flex flex-col items-center">
+                            <div class="mb-2 h-16 w-16">
+                                <img src="Info/Logo/Logo.png" alt="Escudo de Los Cedros FC" class="h-full w-full object-contain">
+                            </div>
+                            <span class="text-[11px] font-bold text-center text-gray-200">LOS CEDROS FC</span>
+                        </div>
+
+                        <!-- VS Text -->
+                        <div class="text-center">
+                            <span class="text-3xl font-black italic text-cyan-400 tracking-tighter">VS</span>
+                        </div>
+
+                        <!-- Rival Team -->
+                        <div class="flex flex-col items-center">
+                            <div class="mb-2 h-16 w-16">
+                                <img src="Info/Logo de equipo contrario/Sporting Rivas.png" alt="Escudo de Sporting Rivas" class="h-full w-full object-contain">
+                            </div>
+                            <span class="max-w-[90px] text-[10px] font-bold text-center text-gray-200">SPORTING RIVAS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="mt-4 text-center">
+                    <button onclick="openLastMatchModal()" 
+                            class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-md">
+                        Ver detalle <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- WIDGET 2: ÚLTIMAS NOTICIAS -->
+            <div id="noticias" class="card-blur card-hover rounded-2xl p-5 flex flex-col justify-between">
+                <div>
+                    <!-- Header -->
+                    <div class="flex items-center gap-2 pb-3 border-b border-cyan-900/40">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600/30 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid fa-bullhorn text-sm"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm tracking-wider text-white uppercase">ÚLTIMAS NOTICIAS</h3>
+                    </div>
+
+                    <!-- Main News Card -->
+                    <div class="mt-4 rounded-xl overflow-hidden border border-cyan-900/50 bg-blue-950/20">
+                        <div class="relative h-28 overflow-hidden">
+                            <img src="Info/10-4.jpg"
+                                 alt="Los Cedros FC vence 10-4 a Sporting Rivas en la Jornada 9"
+                                 class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="p-3">
+                            <h4 class="font-bold text-xs text-white leading-snug">
+                                Los Cedros F.C. vence 10-4 a Sporting Rivas
+                            </h4>
+                            <p class="text-[11px] text-gray-400 mt-1 line-clamp-2">
+                                Gran victoria de Los Cedros F.C. en la Jornada 9.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Read More Link -->
+                <div class="mt-3 pt-2">
+                    <button onclick="openJornada9News()"
+                            class="text-cyan-400 hover:text-cyan-300 font-semibold text-xs flex items-center gap-1 transition">
+                        Leer más <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- WIDGET 3: GALERÍA -->
+            <div id="galeria" class="card-blur card-hover rounded-2xl p-5 flex flex-col justify-between md:col-span-2 lg:col-span-1">
+                <div>
+                    <!-- Header -->
+                    <div class="flex items-center gap-2 pb-3 border-b border-cyan-900/40">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600/30 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid fa-camera text-sm"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm tracking-wider text-white uppercase">GALERÍA</h3>
+                    </div>
+
+                    <div id="supabaseGallery" class="grid grid-cols-2 gap-2 mt-4" aria-live="polite"></div>
+                    <p id="supabaseGalleryStatus" class="mt-2 text-[11px] text-gray-400" role="status">Cargando fotos...</p>
+                </div>
+
+                <!-- View Gallery Link -->
+                <div class="mt-3 pt-2">
+                    <button onclick="openGalleryCarousel()" 
+                            class="text-cyan-400 hover:text-cyan-300 font-semibold text-xs flex items-center gap-1 transition">
+                        Ver galería <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+  <!-- SPONSORS / PATROCINADORES SECTION -->
+<section id="patrocinadores" class="py-8 border-t border-b border-cyan-900/40 bg-[#020713]">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex items-center gap-2 mb-6 justify-center sm:justify-start">
+            <i class="fa-solid fa-handshake text-cyan-400 text-base"></i>
+            <h3 class="font-extrabold text-xs sm:text-sm tracking-widest text-gray-200 uppercase">
+                NUESTROS PATROCINADORES
+            </h3>
+        </div>
+
+        <!-- Sponsor Logos Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 items-center">
+            
+            <!-- Sponsor 1: Maná Campestre -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Mana.png" alt="Maná Campestre" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 2: Strong -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Gym.png" alt="Strong Fitness Gym" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 3: Electrolit -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Electrolit.png" alt="Electrolit" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 4: BIOPHARMA -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Biopharma.png" alt="Biopharma" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 5: Falcon Muscular -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex flex-col items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Falcon.png" alt="Falcon Muscular" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 6: NATHANIEL FOOD -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition">
+                <img src="Info/Patrocinadores/Nathaniel food.png" alt="Nathaniel Food" class="w-full h-full object-contain">
+            </div>
+
+            <!-- Sponsor 7: GEO ESTUDIOS -->
+            <div class="aspect-square p-4 rounded-xl border border-cyan-900/30 bg-blue-950/20 flex items-center justify-center hover:border-cyan-400/50 transition col-span-2 sm:col-span-2 lg:col-span-1">
+                <img src="Info/Patrocinadores/Geo estudio.png" alt="Geo Estudios" class="w-full h-full object-contain">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-[#01040a] py-6 px-4 lg:px-8 border-t border-cyan-950">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            
+            <!-- Left Info -->
+            <div>
+                <p class="text-xs font-extrabold tracking-widest text-gray-300 uppercase">
+                    LOS CEDROS F.C. <span class="text-cyan-500">|</span> 2025
+                </p>
+            </div>
+
+            <!-- Center Script Slogan -->
+            <div>
+                <p class="font-script-title text-3xl sm:text-4xl text-white font-bold">
+                    Juntos somos más fuertes
+                </p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-semibold text-gray-400 me-1 hidden sm:inline">Síguenos en:</span>
+                
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-full bg-blue-950 border border-cyan-900 flex items-center justify-center text-white hover:bg-blue-600 hover:border-blue-500 transition shadow">
+                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-full bg-blue-950 border border-cyan-900 flex items-center justify-center text-white hover:bg-pink-600 hover:border-pink-500 transition shadow">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube" class="w-9 h-9 rounded-full bg-blue-950 border border-cyan-900 flex items-center justify-center text-white hover:bg-red-600 hover:border-red-500 transition shadow">
+                    <i class="fa-brands fa-youtube text-sm"></i>
+                </a>
+                <a href="https://tiktok.com" target="_blank" aria-label="TikTok" class="w-9 h-9 rounded-full bg-blue-950 border border-cyan-900 flex items-center justify-center text-white hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition shadow">
+                    <i class="fa-brands fa-tiktok text-sm"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <div id="galleryCarouselModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="galleryCarouselTitle">
+        <div class="relative w-full max-w-5xl rounded-2xl border border-cyan-500/40 bg-[#061838] p-4 sm:p-6 shadow-2xl">
+            <div class="mb-4 flex items-center justify-between gap-4">
+                <h2 id="galleryCarouselTitle" class="text-lg font-bold text-cyan-300">Galería de Los Cedros F.C.</h2>
+                <button type="button" onclick="closeGalleryCarousel()" class="grid h-10 w-10 shrink-0 place-items-center rounded-full text-gray-300 transition hover:bg-white/10 hover:text-white" aria-label="Cerrar galería">
+                    <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="relative flex min-h-[45vh] items-center justify-center overflow-hidden rounded-xl bg-black/40">
+                <button type="button" onclick="changeGallerySlide(-1)" class="absolute left-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/65 text-white transition hover:bg-cyan-600" aria-label="Foto anterior">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <img id="galleryCarouselImage" src="" alt="" class="max-h-[70vh] w-full object-contain">
+                <button type="button" onclick="changeGallerySlide(1)" class="absolute right-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-black/65 text-white transition hover:bg-cyan-600" aria-label="Foto siguiente">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+            <p id="galleryCarouselCount" class="mt-3 text-center text-sm text-gray-300" aria-live="polite"></p>
+        </div>
+    </div>
+
+    <div id="lastMatchModal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-[60] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="lastMatchTitle">
+        <div class="relative w-full max-w-md rounded-2xl border border-cyan-500/40 bg-[#061838] p-5 sm:p-7 shadow-2xl">
+            <button type="button" onclick="closeLastMatchModal()" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full text-gray-300 transition hover:bg-white/10 hover:text-white" aria-label="Cerrar resultado">
+                <i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i>
+            </button>
+            <h2 id="lastMatchTitle" class="mb-7 pr-9 text-center text-lg font-extrabold tracking-wider text-cyan-300">RESULTADO FINAL</h2>
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex min-w-0 flex-1 flex-col items-center gap-3 text-center">
+                    <div class="grid h-24 w-24 place-items-center">
+                        <img src="Info/Logo/Logo.png" alt="Escudo de Los Cedros FC" class="h-full w-full object-contain">
+                    </div>
+                    <span class="text-xs font-bold text-gray-100">LOS CEDROS FC</span>
+                </div>
+                <div class="shrink-0 text-center">
+                    <p class="text-3xl font-black tabular-nums text-white">10 <span class="text-cyan-400">-</span> 4</p>
+                    <p class="mt-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300">Final</p>
+                </div>
+                <div class="flex min-w-0 flex-1 flex-col items-center gap-3 text-center">
+                    <div class="grid h-24 w-24 place-items-center">
+                        <img src="Info/Logo de equipo contrario/Sporting Rivas.png" alt="Escudo de Sporting Rivas" class="h-full w-full object-contain">
+                    </div>
+                    <span class="text-xs font-bold text-gray-100">SPORTING RIVAS</span>
+                </div>
+            </div>
+            <button type="button" onclick="closeLastMatchModal()" class="mt-8 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-500">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL DIALOG (for interactive buttons) -->
+    <div id="infoModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-[#061838] border border-cyan-500/40 rounded-2xl p-6 max-h-[90vh] max-w-md w-full overflow-y-auto shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modalTitle" class="text-xl font-bold text-cyan-400 mb-4 pr-8"></h3>
+            <div id="modalImageContainer" class="hidden mb-4 rounded-lg overflow-hidden border border-cyan-800 bg-black/20">
+                <img id="modalImage" src="" alt="Preview" class="mx-auto max-h-[55vh] w-full object-contain"/>
+            </div>
+            <div id="modalBody" class="text-sm text-gray-300 leading-relaxed mb-6 whitespace-pre-line"></div>
+            <button onclick="closeModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-xl text-xs transition">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const supabaseGalleryConfig = {
+            projectUrl: 'https://nrtznkwfyfoyyqcenndr.supabase.co',
+            publishableKey: 'sb_publishable_z0gQCZm2kji0JYCwBVlF0w_UdLAAfzq',
+            bucket: 'Foto Los cedros FC',
+            folder: 'Fotos'
+        };
+        let supabaseGalleryPhotos = [];
+        let galleryCarouselIndex = 0;
+
+        function getSupabaseImageUrl(objectPath) {
+            const bucketPath = encodeURIComponent(supabaseGalleryConfig.bucket);
+            const encodedPath = objectPath
+                .split('/')
+                .map(encodeURIComponent)
+                .join('/');
+            return `${supabaseGalleryConfig.projectUrl}/storage/v1/object/public/${bucketPath}/${encodedPath}`;
+        }
+
+        async function listSupabaseFolder(folderPath, depth = 0, state = { folderCount: 0 }) {
+            if (depth > 5 || state.folderCount >= 30) return [];
+            state.folderCount += 1;
+
+            const response = await fetch(
+                `${supabaseGalleryConfig.projectUrl}/storage/v1/object/list/${encodeURIComponent(supabaseGalleryConfig.bucket)}`,
+                {
+                    method: 'POST',
+                    headers: {
+                        apikey: supabaseGalleryConfig.publishableKey,
+                        Authorization: 'Bearer ' + supabaseGalleryConfig.publishableKey,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        prefix: folderPath ? `${folderPath}/` : '',
+                        limit: 100,
+                        offset: 0,
+                        sortBy: { column: 'name', order: 'asc' }
+                    })
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`Supabase Storage respondió ${response.status}: ${await response.text()}`);
+            }
+
+            const entries = await response.json();
+            if (!Array.isArray(entries)) {
+                throw new Error('Supabase Storage devolvió una respuesta de formato inesperado.');
+            }
+
+            const photos = [];
+            for (const entry of entries) {
+                if (typeof entry.name !== 'string' || !entry.name) continue;
+
+                const objectPath = folderPath ? `${folderPath}/${entry.name}` : entry.name;
+                const mimeType = entry.metadata?.mimetype
+                    || entry.metadata?.contentType
+                    || entry.metadata?.content_type
+                    || '';
+                const isImage = /^image\//i.test(mimeType)
+                    || /\.(jpe?g|jfif|png|apng|gif|webp|avif|bmp|svg|tiff?|heic|heif|ico)$/i.test(entry.name);
+
+                if (isImage) {
+                    photos.push({ name: entry.name, path: objectPath });
+                } else if (entry.id == null && entry.metadata == null && depth < 5) {
+                    photos.push(...await listSupabaseFolder(objectPath, depth + 1, state));
+                }
+            }
+
+            return photos;
+        }
+
+        async function loadSupabaseGallery() {
+            const gallery = document.getElementById('supabaseGallery');
+            const status = document.getElementById('supabaseGalleryStatus');
+            status.textContent = 'Cargando fotos...';
+
+            try {
+                let photos = await listSupabaseFolder(supabaseGalleryConfig.folder);
+                if (!photos.length) {
+                    const rootPhotos = await listSupabaseFolder('');
+                    const folderName = supabaseGalleryConfig.folder.toLocaleLowerCase();
+                    photos = rootPhotos.filter((photo) =>
+                        photo.path.split('/').slice(0, -1)
+                            .some((segment) => segment.toLocaleLowerCase() === folderName)
+                    );
+                }
+                supabaseGalleryPhotos = photos;
+                gallery.replaceChildren();
+
+                photos.slice(0, 4).forEach((photo) => {
+                    const imageUrl = getSupabaseImageUrl(photo.path);
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'h-20 rounded-lg overflow-hidden border border-cyan-900/40 group cursor-pointer';
+                    button.setAttribute('aria-label', `Abrir foto ${photo.name}`);
+                    button.addEventListener('click', () => openImageModal(imageUrl));
+
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = `Foto de Los Cedros F.C.: ${photo.name}`;
+                    image.loading = 'lazy';
+                    image.decoding = 'async';
+                    image.className = 'w-full h-full object-cover group-hover:scale-110 transition duration-300';
+                    button.appendChild(image);
+                    gallery.appendChild(button);
+                });
+
+                status.textContent = photos.length
+                    ? `Mostrando ${Math.min(photos.length, 4)} de ${photos.length} fotos.`
+                    : 'No se encontraron imágenes. Verifica que estén dentro de Fotos y que el bucket permita listarlas.';
+            } catch (error) {
+                console.error('No se pudo cargar la galería de Supabase.', error);
+                gallery.replaceChildren();
+                status.textContent = 'No se pudieron cargar las fotos. Revisa la clave pública y el permiso para listar archivos del bucket.';
+            }
+        }
+
+        loadSupabaseGallery();
+
+        const primaryNavLinks = document.querySelectorAll('.site-header__nav a[href^="#"]');
+        primaryNavLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                primaryNavLinks.forEach((navLink) => {
+                    navLink.classList.remove('is-active');
+                    navLink.removeAttribute('aria-current');
+                });
+                link.classList.add('is-active');
+                link.setAttribute('aria-current', 'page');
+            });
+        });
+
+        // Smooth scroll helper
+        function scrollToWidget(id) {
+            const element = document.querySelector(id);
+            if(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Modal Handler
+        function openModal(title, body) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = body;
+            document.getElementById('modalImageContainer').classList.add('hidden');
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function openJornada9News() {
+            document.getElementById('modalTitle').textContent = '🏆 ¡LOS CEDROS F.C. SE IMPONE CON AUTORIDAD! ⚽🔥';
+            document.getElementById('modalBody').textContent =
+                'En la Jornada 9, Los Cedros F.C. consiguió una gran victoria al derrotar 10-4 a Sporting Rivas, en un partido lleno de intensidad, emoción y goles.\n\n' +
+                'Nuestro equipo demostró su poder ofensivo, buen juego colectivo y determinación dentro de la cancha, logrando una importante victoria que refleja el esfuerzo y compromiso de todos los jugadores.\n\n' +
+                '¡Seguimos creciendo, luchando y dejando todo por estos colores! 💙\n\n' +
+                '¡VAMOS CEDROS! 💪⚽\n' +
+                '#VamosCedro #LosCedrosFC #Futsal #Jornada9';
+            const imageContainer = document.getElementById('modalImageContainer');
+            const image = document.getElementById('modalImage');
+            image.src = 'Info/10-4.jpg';
+            image.alt = 'Foto del resultado final 10-4 de Los Cedros FC contra Sporting Rivas, Jornada 9';
+            imageContainer.classList.remove('hidden');
+            document.getElementById('infoModal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function openImageModal(imgSrc) {
+            document.getElementById('modalTitle').innerText = 'Fotografía Oficial';
+            document.getElementById('modalBody').innerText = 'Momento destacado de Los Cedros F.C. en la temporada 2025.';
+            const imgContainer = document.getElementById('modalImageContainer');
+            const img = document.getElementById('modalImage');
+            img.src = imgSrc;
+            imgContainer.classList.remove('hidden');
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function openLastMatchModal() {
+            const modal = document.getElementById('lastMatchModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLastMatchModal() {
+            const modal = document.getElementById('lastMatchModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function openGalleryCarousel() {
+            if (!supabaseGalleryPhotos.length) {
+                document.getElementById('supabaseGalleryStatus').textContent =
+                    'La galería todavía no tiene fotos disponibles.';
+                return;
+            }
+
+            galleryCarouselIndex = 0;
+            renderGalleryCarouselSlide();
+            const modal = document.getElementById('galleryCarouselModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function renderGalleryCarouselSlide() {
+            const photo = supabaseGalleryPhotos[galleryCarouselIndex];
+            const image = document.getElementById('galleryCarouselImage');
+            image.src = getSupabaseImageUrl(photo.path);
+            image.alt = `Foto ${galleryCarouselIndex + 1}: ${photo.name}`;
+            document.getElementById('galleryCarouselCount').textContent =
+                `${galleryCarouselIndex + 1} de ${supabaseGalleryPhotos.length}`;
+        }
+
+        function changeGallerySlide(direction) {
+            if (!supabaseGalleryPhotos.length) return;
+            galleryCarouselIndex =
+                (galleryCarouselIndex + direction + supabaseGalleryPhotos.length) % supabaseGalleryPhotos.length;
+            renderGalleryCarouselSlide();
+        }
+
+        function closeGalleryCarousel() {
+            const modal = document.getElementById('galleryCarouselModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Close modal when clicking outside box
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('infoModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+            if (e.target === document.getElementById('galleryCarouselModal')) {
+                closeGalleryCarousel();
+            }
+            if (e.target === document.getElementById('lastMatchModal')) {
+                closeLastMatchModal();
+            }
+        });
+
+        window.addEventListener('keydown', (event) => {
+            const galleryModal = document.getElementById('galleryCarouselModal');
+            const lastMatchModal = document.getElementById('lastMatchModal');
+            if (event.key === 'Escape') {
+                if (!galleryModal.classList.contains('hidden')) closeGalleryCarousel();
+                if (!lastMatchModal.classList.contains('hidden')) closeLastMatchModal();
+                return;
+            }
+            if (galleryModal.classList.contains('hidden')) return;
+            if (event.key === 'ArrowRight') changeGallerySlide(1);
+            if (event.key === 'ArrowLeft') changeGallerySlide(-1);
+        });
+    </script>
+</body>
+</html>
