@@ -269,11 +269,11 @@
 
             .hero-reference__copy {
                 position: absolute;
-                top: 49%;
+                top: 34%;
                 left: 0.25rem;
                 width: calc(100% - 0.5rem);
                 margin: 0;
-                text-align: left;
+                text-align: center;
                 transform: none;
                 text-shadow: 0 2px 8px #030a19, 0 0 18px #030a19;
             }
@@ -1000,13 +1000,13 @@
             }
 
             .hero-reference__copy {
-                top: 49%;
+                top: 34%;
                 left: 0.25rem;
                 width: calc(100% - 0.5rem);
             }
 
             .hero-reference__title {
-                text-align: left;
+                text-align: center;
                 font-size: clamp(2.2rem, 9vw, 3.4rem);
                 letter-spacing: -0.06em;
             }
@@ -1140,7 +1140,7 @@
             }
 
             .hero-reference__copy {
-                top: 48%;
+                top: 34%;
             }
 
             .hero-reference__title {
@@ -1157,6 +1157,13 @@
 
             .hero-reference__team {
                 width: 115vw;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero-reference__subtitle,
+            .hero-reference__tagline {
+                transform: translateX(0);
             }
         }
 
